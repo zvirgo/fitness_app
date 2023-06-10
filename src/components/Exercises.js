@@ -36,10 +36,14 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const indexOfLastExercise = currentPage * exercisePerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisePerPage;
   console.log("exercises", exercises);
-  const currentExercises = exercises.slice(
-    indexOfFirstExercise,
-    indexOfLastExercise
-  );
+  let currentExercises;
+  if (Array.isArray(exercises)) {
+    currentExercises = exercises?.slice(
+      indexOfFirstExercise,
+      indexOfLastExercise
+    );
+  } else console.error(exercises.message);
+ 
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1800, behavior: "smooth" });
@@ -61,9 +65,10 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         flexWrap="wrap"
         justifyContent="center"
       >
-        {currentExercises.map((exercise, index) => (
+       
+        {currentExercises?.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />
-        ))}
+        )) ?? []}
       </Stack>
       <Stack mt="50px" alignItems="center">
         {exercises.length > 9 && (

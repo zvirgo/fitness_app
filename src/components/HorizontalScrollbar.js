@@ -33,7 +33,7 @@ const HorizontalScrollbar = ({ data, setBodyPart, bodyPart }) => {
           key={item.id || item}
           itemId={item.id || item}
           title={item.id || item}
-          m="0 40px"
+          m="40px"
         >
           <BodyParts
             item={item}
