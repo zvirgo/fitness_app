@@ -3,7 +3,6 @@ import React from "react";
 import Loader from "./Loader";
 
 const ExerciseVideos = ({ exerciseVideo, name }) => {
-  console.log("exerciseVideo", exerciseVideo);
   if (!exerciseVideo.length) return <Loader />;
 
   return (
